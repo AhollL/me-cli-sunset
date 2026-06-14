@@ -1,0 +1,29 @@
+name = "me-cli-sunset"
+main = "cloudflare/workers.js"
+compatibility_date = "2025-01-01"
+
+# Workers Free Tier - no paid features needed
+[env.production]
+name = "me-cli-dashboard"
+
+# KV Namespace - store dashboard data
+[[kv_namespaces]]
+binding = "MECLI_KV"
+id = "ae472ff8293a43e19a404eeaa2abb089"
+
+# Optional: D1 Database (for relational data)
+# [[d1_databases]]
+# binding = "MECLI_DB"
+# database_name = "me-cli-db"
+# database_id = "your-d1-database-id"
+
+# Environment variables (non-secret)
+[vars]
+ENVIRONMENT = "production"
+DASHBOARD_VERSION = "2.0.0"
+
+# Secrets (set via: wrangler secret put <NAME>)
+# TELEGRAM_BOT_TOKEN = "set via wrangler secret put"
+# TELEGRAM_WEBHOOK_SECRET = "set via wrangler secret put"
+# SESSION_SECRET = "set via wrangler secret put"
+# STORAGE_ENCRYPTION_KEY = "set via wrangler secret put"
